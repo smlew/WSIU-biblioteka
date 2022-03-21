@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '00adr_vnch#4o&4aw6x5h%8v(7k#c#
 #SECRET_KEY = 'django-insecure-00adr_vnch#4o&4aw6x5h%8v(7k#c#t4!^o)x+cf_u)4v572f!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
+DEBUG = False
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
 ALLOWED_HOSTS = []
