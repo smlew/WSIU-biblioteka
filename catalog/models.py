@@ -76,4 +76,3 @@ class Autor(models.Model):
 
     def __str__(self):
         return '%s, %s' % (self.nazwisko, self.imie)
-
