@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+	<h1>Administrowanie</h1>
+	<div class="icon__items">
+		<div class="icons">
+			<a href="{% url 'dodanie_autora' %}" title="">
+				<img src="{% static 'icons/user.png' %}" alt="" width="100px"></a>
+			<a href="{% url 'dodanie_autora' %}" title="">Dodanie autora</a>
+		</div>
+
+		<div class="icons">
+			<a href="{% url 'dodanie_ksiazki' %}" title="">
+				<img src="{% static 'icons/book_plus.png' %}" alt="" width="100px"></a>
+			<a href="{% url 'dodanie_ksiazki' %}" title="">Dodanie ksiazki</a>
+		</div>
+
+		<div class="icons">
+			<a href="{% url 'wszystkie' %}" title="">
+				<img src="{% static 'icons/search.png' %}" alt="" width="100px"></a>
+			<a href="{% url 'wszystkie' %}" title="">Lista wszystkich wypożyczonych książek</a>
+		</div>
+	</div>
+	
+</div>
+
+{% endblock %}

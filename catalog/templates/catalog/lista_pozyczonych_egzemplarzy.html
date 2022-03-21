@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <div class="container">
+      
+    <h1>Borrowed books</h1>
+
+    {% if egzemplarz_list %}
+    <ul>
+
+      {% for egzempl in egzemplarz_list %}
+      <li class="{% if egzempl.zalegly %}color=red;{% endif %}">
+        <a href="{% url 'szczegoly_ksiazki' egzempl.ksiazka.pk %}">{{egzempl.ksiazka.tytul}}</a> ({{ egzempl.zwrot }})
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no books borrowed.</p>
+    {% endif %}
+
+    </div>
+{% endblock %}

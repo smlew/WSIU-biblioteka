@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<div class="container">
+    <h1>Dodanie książki</h1>
+    <form class="add" action="" method="post">
+
+        {% csrf_token %}
+            {{ form }}
+        {% if lista_autorow %}
+
+        
+        <select name="wybor_autora">
+            {% for autor in lista_autorow %}
+                <option value=" {{autor.id}} ">{{ autor.imie }} {{ autor.nazwisko }}</option>
+            {% endfor %}
+        </select>
+        {% endif %}
+        <div class="submit">
+            <input type="submit" value="Submit" />
+        </div>
+        
+    </form>
+</div>
+
+{% endblock %}

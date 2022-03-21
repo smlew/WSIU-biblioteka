@@ -1,0 +1,50 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="book__detail">
+
+    <div class="book__detail__picture">
+      {% static 'ksiazki/' as obrazy %}
+      <img src = "{{obrazy}}/{{ksiazka.obraz}}" alt="">
+    </div>
+          
+
+      <div class="book__detail__text">
+        <h1><b> {{ ksiazka.tytul }} </b></h1>
+
+          <p><b>Autor:</b> <a href="{% url 'szczegoly_o_autorze' ksiazka.autor.pk %}">{{ ksiazka.autor }}</a></p>
+          <p><b>Opis:</b> {{ ksiazka.opis|linebreaksbr }}</p>
+          <p><b>ISBN:</b> {{ ksiazka.isbn }}</p>
+          <p><b>Gatunek:</b> {% for gatunek in ksiazka.gatunek.all %} {{ gatunek }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+          </div>
+        </div>
+
+  <div>
+    <form method="post">
+      {% csrf_token %}
+      {% if ksiazka.egzemplarz_set.all %}
+      <select name = "wybor_wydawcy">
+            {% for copy in ksiazka.egzemplarz_set.all %}
+              <option value="{{copy.id}}">{{copy.wydawca}} {{ copy.id|truncatechars_html:9 }}</option>
+            {% endfor %}
+          <input type="submit" value="Submit" />
+        {% endif %}
+      </select>
+    </form>
+  </div>
+
+  <div style="margin-left:20px;margin-top:20px">
+        <h4>Kopie</h4>
+
+        {% for copy in ksiazka.egzemplarz_set.all %}
+        <hr>
+        <p>{{ copy.get_status_display }}</p>
+        {% if copy.status != 'd' %}<p><b>Data zwrotu:</b> {{copy.zwrot}}</p>{% endif %}
+        <p><b>Wydawca:</b> {{copy.wydawca}}</p>
+        <p><b>Id:</b> {{copy.id}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

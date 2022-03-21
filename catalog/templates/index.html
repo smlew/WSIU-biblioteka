@@ -1,0 +1,95 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+
+  <div class="intro__inner">
+    <div class="intro__title">Local Library Home</div>
+  </div>
+
+</div>
+
+
+<section class="section">
+
+  <div class="container">
+    <div class="section__header">
+
+      <h3 class="section__suptitle">Co my robimy?</h3>
+      <h2 class="section__title">Historia o nas</h2>
+      <div class="section__text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+<div class="container">
+  <div class="about">
+
+  <div class="about__item">
+    <div class="about__img">
+      <img src="{% static 'zdiecia/1.jpg' %}" alt="">
+    </div>
+    <div class="about__text">rozszerzamy wiedzę</div>
+  </div>
+
+  <div class="about__item">
+    <div class="about__img">
+      <img src="{% static 'zdiecia/2.jpg' %}" alt="">
+    </div>
+    <div class="about__text">udostępniamy</div>
+  </div>
+
+  <div class="about__item">
+    <div class="about__img">
+      <img src="{% static 'zdiecia/3.jpg' %}" alt="">
+    </div>
+    <div class="about__text">dzielimy się doświadczeniem</div>
+  </div>
+
+</div>
+</div>
+
+
+</section>
+
+
+<div class="statistics">
+  <div class="container">
+
+    <div class="stat">
+      <div class="stat__item">
+        <div class="stat__count">{{ ilosc_ksiazek }}</div>
+        <div class="stat__text">Ilość książek</div>
+      </div>
+      <div class="stat__item">
+        <div class="stat__count">{{ ilosc_egzemplarzy }}</div>
+        <div class="stat__text">Ilość egzempplarzy</div>
+      </div>
+      <div class="stat__item">
+        <div class="stat__count">{{ ilosc_dostepnych_egzemplarzy }}</div>
+        <div class="stat__text">Ilość dostępnych egzemplarzy</div>
+      </div>
+      <div class="stat__item">
+        <div class="stat__count">{{ ilosc_autorow }}</div>
+        <div class="stat__text">Ilość autorów</div>
+      </div>
+      <div class="stat__item">
+        <div class="stat__count">{{ ilosc_gatunkow }}</div>
+        <div class="stat__text">Ilość garunków</div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+{% endblock %}

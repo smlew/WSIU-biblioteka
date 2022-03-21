@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  {% block title %}<title>Local Library</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Roboto&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}?modified=20012009">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header__inner">
+        <a href="{% url 'index' %}"> <img src="{% static 'logo.png' %}"> </a>
+
+
+      <nav class="nav">
+          <a class="nav__link" href="{% url 'index' %}">Strona główna</a>
+          <a class="nav__link" href="{% url 'ksiazki' %}">Książki</a>
+          <a class="nav__link" href="{% url 'autorzy' %}">Autorzy</a>
+          
+          {% if user.is_authenticated %}
+            <a class="nav__link"
+            {% if user.is_staff %}
+                  {% if perms.catalog.can_mark_returned %}
+                    href="{% url 'administrowanie' %}" 
+                  {% endif %}
+              {% endif %}
+            >Użytkownik: {{ user.get_username }}</a>
+            <a class="nav__link" href="{% url 'pozyczone' %}">Pożyczone</a>
+            <a class="nav__link" href="{% url 'logout'%}?next={{request.path}}">Logout</a>
+          {% else %}
+            <a class="nav__link" href="{% url 'login' %}">Logowanie</a>
+          {% endif %} 
+      </nav>
+    </div>
+
+
+  </div>
+  {% block content %}{% endblock %}
+
+
+
+</body>
+</html>

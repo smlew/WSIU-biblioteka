@@ -1,0 +1,52 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="container">
+      <h1 class="book__header">Lista książek</h1>
+
+      <div class="books__list">
+        {% if ksiazka_list %}
+          {% for ksiazka in ksiazka_list %}
+
+            <div class="book__item">
+              <div class="book__picture">
+                {% static 'ksiazki/' as obrazy %}
+                <a href="{{ ksiazka.get_absolute_url }}"><img src="{{obrazy}}/{{ksiazka.obraz}}" alt=""></a>
+              </div>
+              
+              <div class="book__title">
+                <a href="{{ ksiazka.get_absolute_url }}">{{ ksiazka.tytul }}</a> </br>({{ksiazka.autor}})
+              </div>
+            </div>
+
+          {% endfor %}
+        {% else %}
+
+          <p>There are no books in the library.</p>
+
+        {% endif %}
+      </div>
+
+      {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+    
+    </div>
+
+    
+    
+{% endblock %}
+

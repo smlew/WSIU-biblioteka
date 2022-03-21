@@ -1,0 +1,50 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+	<div class="container">
+
+		<div class="autor__detail">
+
+			<div class="autor__detail__picture">
+				{% static '/autorzy' as autorzy %}
+		      <img src = "{{autorzy}}/{{ autor.zdiecie }}" alt="">
+				
+		    </div>
+
+		    <div class="autor__detail__text">
+		    	<h1><b> {{ autor.imie }} {{ autor.nazwisko }} </b></h1>
+
+				<p><b>Data urodzenia:</b> {{ autor.data_urodzenia }}</p>
+
+				<p><b>Życiorys:</b> {{ autor.zyciorys|linebreaksbr }}</p>
+		    </div>
+		
+
+		</div>
+
+
+			<table class="rowNumbers" style="margin:10px">
+				<caption>Książki</caption>
+					<thead>
+						<tr>
+							<th>Tytuł</th>
+							<th>Gatunek</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for copy in autor.ksiazka_set.all %}
+						<tr>
+							
+						        <td >{{copy.tytul}}</td>
+
+						        <td>{{ copy.gatunki }}</td>
+						    						
+						</tr>
+						{% endfor %}	
+					</tbody>
+			</table>
+		
+	</div>
+	
+
+{% endblock %}
