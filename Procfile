@@ -1,1 +1,1 @@
-web: gunicorn WSIU-biblioteka.wsgi
+web: gunicorn biblioteka.wsgi
