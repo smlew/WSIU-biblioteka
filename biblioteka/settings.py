@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '00adr_vnch#4o&4aw6x5h%8v(7k#c#
 #DEBUG = False
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['shrouded-temple-48516/herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
