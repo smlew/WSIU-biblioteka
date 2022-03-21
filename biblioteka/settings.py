@@ -23,14 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 import os
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-00adr_vnch#4o&4aw6x5h%8v(7k#c#t4!^o)x+cf_u)4v572f!')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '00adr_vnch#4o&4aw6x5h%8v(7k#c#t4!^o)x+cf_u)4v572f!')
 #SECRET_KEY = 'django-insecure-00adr_vnch#4o&4aw6x5h%8v(7k#c#t4!^o)x+cf_u)4v572f!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shrouded-temple-48516/herokuapp.com']
 
 
 # Application definition
