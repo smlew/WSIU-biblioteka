@@ -28,7 +28,7 @@
             {% for copy in ksiazka.egzemplarz_set.all %}
               <option value="{{copy.id}}">{{copy.wydawca}} {{ copy.id|truncatechars_html:9 }}</option>
             {% endfor %}
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Wybierz" />
         {% endif %}
       </select>
     </form>
