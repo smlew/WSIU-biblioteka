@@ -1,9 +1,9 @@
 {% extends "base_generic.html" %}
 {% block content %}
 <div class="container">
-    <h1>Renew: {{egzempl.ksiazka.tytul}}</h1>
-    <p>Borrower: {{egzempl.odbiorca}}</p>
-    <p{% if egzempl.zalegly %} class="text-danger"{% endif %}>Due date: {{egzempl.zwrot}}</p>
+    <h1>Przedłużenie: {{egzempl.ksiazka.tytul}}</h1>
+    <p>Odbiorca: {{egzempl.odbiorca}}</p>
+    <p>Termin: {{egzempl.zwrot}}</p>
 
     <form action="" method="post">
         {% csrf_token %}

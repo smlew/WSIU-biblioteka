@@ -3,20 +3,20 @@
 {% block content %}
     <div class="container">
       
-    <h1>Borrowed books</h1>
+    <h1>Pożyczone księgi</h1>
 
     {% if egzemplarz_list %}
     <ul>
 
       {% for egzempl in egzemplarz_list %}
-      <li class="{% if egzempl.zalegly %}color=red;{% endif %}">
+      <li>
         <a href="{% url 'szczegoly_ksiazki' egzempl.ksiazka.pk %}">{{egzempl.ksiazka.tytul}}</a> ({{ egzempl.zwrot }})
       </li>
       {% endfor %}
     </ul>
 
     {% else %}
-      <p>There are no books borrowed.</p>
+      <p>Nie ma pożyczonych książek</p>
     {% endif %}
 
     </div>

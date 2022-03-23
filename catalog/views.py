@@ -4,12 +4,10 @@ from django.shortcuts import render
 
 from .models import Ksiazka, Autor, Egzemplarz, Gatunek
 from django.views import generic
-# from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.contrib.auth.decorators import permission_required
-# from django.views.generic.edit import FormMixin
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import get_object_or_404
 
@@ -46,7 +44,9 @@ def index(request):
 class KsiazkaListView(generic.ListView):
     model = Ksiazka
     template_name = 'catalog/lista_ksiazek.html'
-    paginate_by = 10
+    paginate_by = 8
+    ordering =['tytul']
+
 
 class KsiazkaDetailView(generic.DetailView):
     model = Ksiazka
@@ -55,8 +55,6 @@ class KsiazkaDetailView(generic.DetailView):
     def post(self, request, *args,**kwargs):
         if request.method == 'POST' :
             ksiazka = Ksiazka.objects.get(pk=self.kwargs.get('pk'))
-            
-            print(ksiazka.obraz)
 
             wybor_wydawcy = request.POST.get('wybor_wydawcy')
             
@@ -79,6 +77,8 @@ class KsiazkaDetailView(generic.DetailView):
 class AutorzyListView(generic.ListView):
     model = Autor
     template_name = 'catalog/lista_autorow.html'
+
+    ordering =['imie']
 
 class AutorDetailView(generic.DetailView):
     model = Autor
@@ -129,8 +129,6 @@ def dodanie_ksiazki(request):
 
         wybor_autora = request.POST.get('wybor_autora')
         autor = Autor.objects.get(id=wybor_autora)
-
-        print(autor)
 
         if form.is_valid():
             ksiazka = Ksiazka(tytul=form.cleaned_data['tytul'], isbn=form.cleaned_data['isbn'], autor=autor)

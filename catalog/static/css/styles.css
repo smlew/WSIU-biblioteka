@@ -361,6 +361,7 @@ body {
   list-style: none;
   background:#E8E8E8;
   padding: 10px;
+  max-width: 500px;
 }
 .square li {
   position: relative;
